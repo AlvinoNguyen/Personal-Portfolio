@@ -25,11 +25,15 @@ const setColors = (backgroundColor, color) => {
     }
     document.body.style.backgroundColor = backgroundColor;
     nav.style.backgroundColor = backgroundColor;
+    nav.style.borderBottom = `dashed 4px ${color}`;
 }
 
 window.addEventListener('scroll', () => {
-    if(isInViewport(projects)) {
-        setColors('blue', 'white');
+    if(isInViewport(home)) {
+        setColors('white', 'black');
+    }
+    else if(isInViewport(aboutMe)) {
+        setColors('black', 'white');
     } else {
         setColors('white', 'black');
     }

@@ -8,6 +8,7 @@
     --main-color: white;
     --text-color: black;
     --page-font: "Comic Sans MS", cursive, sans-serif;
+    --scroll-transition-time: 3s;
 }
 
 html {
@@ -22,29 +23,32 @@ nav {
     position: fixed;
     width: 100vw;
     background-color: white;
-    transition: background-color 1s;
+    transition: background-color var(--scroll-transition-time),
+                border-bottom var(--scroll-transition-time);
+    border-bottom: 4px dashed black;
 }
 
 .buttons {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50vw;
 }
 
 .link {
     font-family: var(--page-font);
     font-size: 1.25rem;
-    height: 2.5rem;
     text-align: center;
-    transition: font-size 0.3s;
-    width: 200px;
+    transition: transform 0.3s;
 }
 
 .link:hover {
-    font-size: 1.5rem;
+    transform: scale(1.5);
 }
 
 body {
     background-color: var(--main-color);
-    transition: background-color 1s;
+    transition: background-color var(--scroll-transition-time);
 }
 
 main {
@@ -58,7 +62,15 @@ section {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    width: 800px;
+    width: 60vw;
+}
+
+#home {
+    width: 100%;
+    background-image: url(images/background.png);
+    background-size: cover;
+    background-repeat: repeat-x;
+    animation: scroll 8s linear infinite;
 }
 
 h1,
@@ -68,8 +80,7 @@ div {
     font-family: var(--page-font);
 }
 
-h1,
-h2 {
+h1 {
     text-align: center;
 }
 
@@ -89,5 +100,24 @@ p {
 
 .text-color {
     color: var(--text-color);
-    transition: color 1s;
+    transition: color var(--scroll-transition-time);
+}
+
+@media (max-width: 750px) {
+    section {
+        width: 80vw;
+    }
+
+    nav {
+        height: 150px;
+    }
+
+    nav .buttons {
+        flex-direction: column;
+    }
+}
+
+@keyframes scroll {
+    0% {background-position: 0 0;}
+    100% {background-position: 100vw 0;}
 }
