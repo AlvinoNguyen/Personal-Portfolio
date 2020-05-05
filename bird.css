@@ -1,0 +1,57 @@
+:root {
+    --bird-x-position: 0;
+    --bird-y-position: 1.25rem;
+
+    --bird-x-offset: 15vw;
+    --bird-y-offset: 5vh;
+}
+
+.bird {
+    width: 25vw;
+    position: relative;
+    animation: move 30s ease-in-out infinite;
+    transition: transform .3s;
+}
+
+.bird:hover {
+    transform: scale(1.1);
+}
+
+@keyframes move {
+    0% {
+        left: var(--bird-x-position);
+        bottom: var(--bird-y-position);
+    }
+    13% {
+        left: calc(var(--bird-x-offset) / -2);
+        bottom: calc(var(--bird-y-position) + var(--bird-y-offset));
+    }
+    25% {
+        left: calc(var(--bird-x-offset) * -1);
+        bottom: var(--bird-y-position);
+    }
+    38% {
+        left: calc(var(--bird-x-offset) / -2);
+        bottom: calc(var(--bird-y-position) - var(--bird-y-offset));
+    }
+    50% {
+        left: var(--bird-x-position);
+        bottom: var(--bird-y-position);
+    }
+    63% {
+        left: calc(var(--bird-x-offset) / 2);
+        bottom: calc(var(--bird-y-position) + var(--bird-y-offset));
+    }
+    75% {
+        left: var(--bird-x-offset);
+        bottom: var(--bird-y-position);
+    }
+    88% {
+        left: calc(var(--bird-x-offset) / 2);
+        bottom: calc(var(--bird-y-position) - var(--bird-y-offset));
+    }
+    100% {
+        left: var(--bird-x-position);
+        bottom: var(--bird-y-position);
+    }
+}

@@ -26,6 +26,7 @@ nav {
     transition: background-color var(--scroll-transition-time),
                 border-bottom var(--scroll-transition-time);
     border-bottom: 4px dashed black;
+    z-index: 1;
 }
 
 .buttons {
@@ -68,9 +69,11 @@ section {
 #home {
     width: 100%;
     background-image: url(images/background.png);
-    background-size: cover;
+    background-size: 100vw 100vh;
     background-repeat: repeat-x;
     animation: scroll 8s linear infinite;
+    display: flex;
+    flex-direction: column;
 }
 
 h1,
@@ -121,3 +124,42 @@ p {
     0% {background-position: 0 0;}
     100% {background-position: 100vw 0;}
 }
+
+@keyframes move {
+    0% {
+      left: var(--bird-x-position);
+      bottom: var(--bird-y-position);
+    }
+    13% {
+      left: calc(var(--bird-x-offset) / -2);
+      bottom: calc(var(--bird-y-position) + var(--bird-y-offset));
+    }
+    25% {
+      left: calc(var(--bird-x-offset) * -1);
+      bottom: var(--bird-y-position);
+    }
+    38% {
+      left: calc(var(--bird-x-offset) / -2);
+      bottom: calc(var(--bird-y-position) - var(--bird-y-offset));
+    }
+    50% {
+      left: var(--bird-x-position);
+      bottom: var(--bird-y-position);
+    }
+    63% {
+      left: calc(var(--bird-x-offset) / 2);
+      bottom: calc(var(--bird-y-position) + var(--bird-y-offset));
+    }
+    75% {
+      left: var(--bird-x-offset);
+      bottom: var(--bird-y-position);
+    }
+    88% {
+      left: calc(var(--bird-x-offset) / 2);
+      bottom: calc(var(--bird-y-position) - var(--bird-y-offset));
+    }
+    100% {
+      left: var(--bird-x-position);
+      bottom: var(--bird-y-position);
+    }
+  }

@@ -3,6 +3,7 @@ const home = document.getElementById('home');
 const aboutMe = document.getElementById('about-me');
 const projects = document.getElementById('projects');
 const nav = document.querySelector('nav');
+const bird = document.querySelector('.bird');
 
 const resolveLater = async n => {
     return new Promise(resolve => {
@@ -38,3 +39,12 @@ window.addEventListener('scroll', () => {
         setColors('white', 'black');
     }
 });
+
+setInterval(() => {
+    if(bird.getAttribute("src") == "images/1.png") {
+      bird.setAttribute("src", "images/2.png"); 
+    }
+    else {
+      bird.setAttribute("src", "images/1.png");  
+    }
+  }, 250);
