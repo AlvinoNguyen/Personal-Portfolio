@@ -15,6 +15,11 @@ html {
     scroll-behavior: smooth;
 }
 
+body {
+    background-color: var(--main-color);
+    transition: background-color var(--scroll-transition-time);
+}
+
 nav {
     display: flex;
     justify-content: space-between;
@@ -27,29 +32,6 @@ nav {
                 border-bottom var(--scroll-transition-time);
     border-bottom: 4px dashed black;
     z-index: 1;
-}
-
-.buttons {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 50vw;
-}
-
-.link {
-    font-family: var(--page-font);
-    font-size: 1.25rem;
-    text-align: center;
-    transition: transform 0.3s;
-}
-
-.link:hover {
-    transform: scale(1.5);
-}
-
-body {
-    background-color: var(--main-color);
-    transition: background-color var(--scroll-transition-time);
 }
 
 main {
@@ -66,16 +48,6 @@ section {
     width: 60vw;
 }
 
-#home {
-    width: 100%;
-    background-image: url(images/background.png);
-    background-size: 100vw 100vh;
-    background-repeat: repeat-x;
-    animation: scroll 8s linear infinite;
-    display: flex;
-    flex-direction: column;
-}
-
 h1,
 h2,
 p,
@@ -85,9 +57,6 @@ div {
 
 h1 {
     text-align: center;
-}
-
-h1 {
     font-weight: normal;
     font-size: 3rem;
 }
@@ -101,9 +70,51 @@ p {
     font-size: 1.5rem;
 }
 
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50vw;
+}
+
+.center {
+    text-align: center;
+}
+
+.link {
+    font-family: var(--page-font);
+    font-size: 1.25rem;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.link:hover {
+    transform: scale(1.5);
+}
+
 .text-color {
     color: var(--text-color);
     transition: color var(--scroll-transition-time);
+}
+
+#home,
+#resume {
+    width: 100%;
+    background-size: 100vw 100vh;
+    background-repeat: repeat-x;
+    display: flex;
+    flex-direction: column;
+}
+
+#home {
+    background-image: url(images/background.png);
+    animation: scroll 8s linear infinite;
+}
+
+#resume {
+    background-image: url(images/cactus.png);
+    background-position: bottom;
+    animation: scroll-reverse 16s linear infinite;
 }
 
 @media (max-width: 750px) {
@@ -125,41 +136,7 @@ p {
     100% {background-position: 100vw 0;}
 }
 
-@keyframes move {
-    0% {
-      left: var(--bird-x-position);
-      bottom: var(--bird-y-position);
-    }
-    13% {
-      left: calc(var(--bird-x-offset) / -2);
-      bottom: calc(var(--bird-y-position) + var(--bird-y-offset));
-    }
-    25% {
-      left: calc(var(--bird-x-offset) * -1);
-      bottom: var(--bird-y-position);
-    }
-    38% {
-      left: calc(var(--bird-x-offset) / -2);
-      bottom: calc(var(--bird-y-position) - var(--bird-y-offset));
-    }
-    50% {
-      left: var(--bird-x-position);
-      bottom: var(--bird-y-position);
-    }
-    63% {
-      left: calc(var(--bird-x-offset) / 2);
-      bottom: calc(var(--bird-y-position) + var(--bird-y-offset));
-    }
-    75% {
-      left: var(--bird-x-offset);
-      bottom: var(--bird-y-position);
-    }
-    88% {
-      left: calc(var(--bird-x-offset) / 2);
-      bottom: calc(var(--bird-y-position) - var(--bird-y-offset));
-    }
-    100% {
-      left: var(--bird-x-position);
-      bottom: var(--bird-y-position);
-    }
-  }
+@keyframes scroll-reverse {
+    0% {background-position: 100vw 0;}
+    100% {background-position: 0 0;}
+}

@@ -1,7 +1,6 @@
 :root {
     --bird-x-position: 0;
     --bird-y-position: 1.25rem;
-
     --bird-x-offset: 15vw;
     --bird-y-offset: 5vh;
 }

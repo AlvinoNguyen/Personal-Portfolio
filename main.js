@@ -16,7 +16,7 @@ const resolveLater = async n => {
 const isInViewport = elem => {
     const bounding = elem.getBoundingClientRect();
     const height = (window.innerHeight || document.documentElement.clientHeight);
-    const epsilon = 300;
+    const epsilon = 350;
     return bounding.top >= -epsilon && bounding.bottom <= height + epsilon;
 }
 
@@ -33,7 +33,7 @@ window.addEventListener('scroll', () => {
     if(isInViewport(home)) {
         setColors('white', 'black');
     }
-    else if(isInViewport(aboutMe)) {
+    else if(isInViewport(aboutMe) || isInViewport(projects)) {
         setColors('black', 'white');
     } else {
         setColors('white', 'black');
@@ -42,9 +42,9 @@ window.addEventListener('scroll', () => {
 
 setInterval(() => {
     if(bird.getAttribute("src") == "images/1.png") {
-      bird.setAttribute("src", "images/2.png"); 
+        bird.setAttribute("src", "images/2.png"); 
     }
     else {
-      bird.setAttribute("src", "images/1.png");  
+        bird.setAttribute("src", "images/1.png");  
     }
-  }, 250);
+}, 250);
