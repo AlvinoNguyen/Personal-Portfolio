@@ -67,7 +67,7 @@ h2 {
 }
 
 p {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
 }
 
 .buttons {
@@ -95,6 +95,15 @@ p {
 .text-color {
     color: var(--text-color);
     transition: color var(--scroll-transition-time);
+}
+
+.responsive {
+    display: block;
+    float: right;
+    margin: 1rem; 
+    max-width: 300px;
+    transition: opacity calc(var(--scroll-transition-time) / 2);
+    width: 25vw;
 }
 
 #home,
@@ -128,6 +137,10 @@ p {
 
     nav .buttons {
         flex-direction: column;
+    }
+
+    .responsive {
+        display: none;
     }
 }
 

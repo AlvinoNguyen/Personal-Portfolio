@@ -4,6 +4,7 @@ const aboutMe = document.getElementById('about-me');
 const projects = document.getElementById('projects');
 const nav = document.querySelector('nav');
 const bird = document.querySelector('.bird');
+const photo = document.querySelector('.responsive');
 
 const resolveLater = async n => {
     return new Promise(resolve => {
@@ -21,9 +22,8 @@ const isInViewport = elem => {
 }
 
 const setColors = (backgroundColor, color) => {
-    for(let i = 0; i < textElements.length; i++) {
+    for(let i = 0; i < textElements.length; i++)
         textElements[i].style.color = color;
-    }
     document.body.style.backgroundColor = backgroundColor;
     nav.style.backgroundColor = backgroundColor;
     nav.style.borderBottom = `dashed 4px ${color}`;
@@ -32,19 +32,25 @@ const setColors = (backgroundColor, color) => {
 window.addEventListener('scroll', () => {
     if(isInViewport(home)) {
         setColors('white', 'black');
+        photo.style.opacity = 0;
     }
-    else if(isInViewport(aboutMe) || isInViewport(projects)) {
+    else if(isInViewport(aboutMe)) {
         setColors('black', 'white');
-    } else {
+        photo.style.opacity = 1;
+    }
+    else if(isInViewport(projects)) {
+        setColors('black', 'white');
+        photo.style.opacity = 0;
+    }
+    else {
         setColors('white', 'black');
+        photo.style.opacity = 0;
     }
 });
 
 setInterval(() => {
-    if(bird.getAttribute("src") == "images/1.png") {
+    if(bird.getAttribute("src") == "images/1.png")
         bird.setAttribute("src", "images/2.png"); 
-    }
-    else {
+    else
         bird.setAttribute("src", "images/1.png");  
-    }
 }, 250);
