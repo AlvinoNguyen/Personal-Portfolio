@@ -142,6 +142,15 @@ p {
     .responsive {
         display: none;
     }
+
+    .projects {
+        flex-direction: column;
+        justify-content: start;
+    }
+
+    .icon {
+        margin: 0 auto;
+    }
 }
 
 @keyframes scroll {
@@ -152,4 +161,24 @@ p {
 @keyframes scroll-reverse {
     0% {background-position: 100vw 0;}
     100% {background-position: 0 0;}
+}
+
+section > div {
+    width: 100%;
+}
+
+.projects {
+    display: flex;
+    justify-content: space-around;
+}
+
+.icon {
+    width: 25vw;
+    display: block;
+    transition: filter calc(var(--scroll-transition-time) / 2), transform 0.3s;
+    margin: 2rem;
+}
+
+.icon:hover {
+    transform: scale(1.25);
 }

@@ -5,6 +5,7 @@ const projects = document.getElementById('projects');
 const nav = document.querySelector('nav');
 const bird = document.querySelector('.bird');
 const photo = document.querySelector('.responsive');
+const icons = document.getElementsByClassName('icon');
 
 const resolveLater = async n => {
     return new Promise(resolve => {
@@ -21,12 +22,24 @@ const isInViewport = elem => {
     return bounding.top >= -epsilon && bounding.bottom <= height + epsilon;
 }
 
+const filterColor = color => {
+    switch(color) {
+        case 'white': return 'invert(100%) sepia(0%) saturate(7500%) hue-rotate(332deg) brightness(108%) contrast(100%)';
+        case 'black': return 'invert(0%) sepia(97%) saturate(0%) hue-rotate(36deg) brightness(92%) contrast(103%)';
+        default: return '';
+    }
+}
+
 const setColors = (backgroundColor, color) => {
     for(let i = 0; i < textElements.length; i++)
         textElements[i].style.color = color;
     document.body.style.backgroundColor = backgroundColor;
     nav.style.backgroundColor = backgroundColor;
     nav.style.borderBottom = `dashed 4px ${color}`;
+    for(let i = 0; i < icons.length; i++) {
+        const icon = icons[i];
+        icon.style.filter = filterColor(color);
+    }
 }
 
 window.addEventListener('scroll', () => {
