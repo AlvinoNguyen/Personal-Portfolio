@@ -24,8 +24,8 @@ const isInViewport = elem => {
 
 const filterColor = color => {
     switch(color) {
-        case 'white': return 'invert(100%) sepia(0%) saturate(7500%) hue-rotate(332deg) brightness(108%) contrast(100%)';
-        case 'black': return 'invert(0%) sepia(97%) saturate(0%) hue-rotate(36deg) brightness(92%) contrast(103%)';
+        case 'white': return 'invert(100%)';
+        case 'black': return 'none';
         default: return '';
     }
 }
@@ -40,6 +40,34 @@ const setColors = (backgroundColor, color) => {
         const icon = icons[i];
         icon.style.filter = filterColor(color);
     }
+}
+
+for(let i = 0; i < icons.length; i++) {
+    const icon = icons[i];
+    icon.addEventListener('mouseover', async (e) => {
+        if(!e.target.style.animation) {
+            e.target.style.animation = 'rotate .5s linear';
+            await resolveLater(500);
+            e.target.style.animation = '';
+        }
+    });
+}
+
+if(isInViewport(home)) {
+    setColors('white', 'black');
+    photo.style.opacity = 0;
+}
+else if(isInViewport(aboutMe)) {
+    setColors('black', 'white');
+    photo.style.opacity = 1;
+}
+else if(isInViewport(projects)) {
+    setColors('black', 'white');
+    photo.style.opacity = 0;
+}
+else {
+    setColors('white', 'black');
+    photo.style.opacity = 0;
 }
 
 window.addEventListener('scroll', () => {

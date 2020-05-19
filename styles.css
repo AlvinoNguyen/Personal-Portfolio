@@ -9,6 +9,7 @@
     --text-color: black;
     --page-font: "Comic Sans MS", cursive, sans-serif;
     --scroll-transition-time: 3s;
+    --rotation-degree: 15deg;
 }
 
 html {
@@ -70,6 +71,10 @@ p {
     font-size: 1.25rem;
 }
 
+section > div {
+    width: 100%;
+}
+
 .buttons {
     display: flex;
     align-items: center;
@@ -106,6 +111,22 @@ p {
     width: 25vw;
 }
 
+.projects {
+    display: flex;
+    justify-content: space-around;
+}
+
+.projects > a {
+    display: flex;
+    justify-content: center;
+}
+
+.icon {
+    width: 25vw;
+    transition: filter calc(var(--scroll-transition-time) / 2);
+    margin: 1.5rem;
+}
+
 #home,
 #resume {
     width: 100%;
@@ -126,6 +147,17 @@ p {
     animation: scroll-reverse 16s linear infinite;
 }
 
+@media (max-width: 550px) {
+    .projects {
+        flex-direction: column;
+        justify-content: start;
+    }
+
+    .icon {
+        margin: .5rem;
+    }
+}
+
 @media (max-width: 750px) {
     section {
         width: 80vw;
@@ -142,15 +174,6 @@ p {
     .responsive {
         display: none;
     }
-
-    .projects {
-        flex-direction: column;
-        justify-content: start;
-    }
-
-    .icon {
-        margin: 0 auto;
-    }
 }
 
 @keyframes scroll {
@@ -163,22 +186,9 @@ p {
     100% {background-position: 0 0;}
 }
 
-section > div {
-    width: 100%;
-}
-
-.projects {
-    display: flex;
-    justify-content: space-around;
-}
-
-.icon {
-    width: 25vw;
-    display: block;
-    transition: filter calc(var(--scroll-transition-time) / 2), transform 0.3s;
-    margin: 2rem;
-}
-
-.icon:hover {
-    transform: scale(1.25);
+@keyframes rotate {
+    25%  {transform: rotate(var(--rotation-degree));}
+    50%  {transform: rotate(0);}
+    75%  {transform: rotate(calc(var(--rotation-degree) * -1));}
+    100% {transform: rotate(0);}
 }
